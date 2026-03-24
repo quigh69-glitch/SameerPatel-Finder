@@ -1,8 +1,9 @@
-﻿#include <iostream>
+#include <iostream>
 #include <string>
 #include <filesystem>
 #include <vector>
 #include <algorithm>
+#include <chrono>
 #include <windows.h>
 
 namespace fs = std::filesystem;
@@ -34,7 +35,9 @@ int main() {
     std::vector<std::string> found_paths;
 
     std::cout << "--- SimpleFinder ---" << std::endl;
-    std::cout << "Scan C:\\ ..." << std::endl;
+    std::cout << "Scan " << root << " ..." << std::endl;
+
+    auto start_time = std::chrono::high_resolution_clock::now();
 
     std::error_code ec;
     auto it = fs::recursive_directory_iterator(root, fs::directory_options::skip_permission_denied, ec);
@@ -67,18 +70,22 @@ int main() {
         }
     }
 
-    std::cout << "\n--- Scan Finished. Found: " << found_paths.size() << " ---" << std::endl;
+    auto end_time = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed = end_time - start_time;
 
-  if (!found_paths.empty()) {
-        std::cout << "  _____  _____  " << std::endl;
-        std::cout << " / ____||  __ \\ " << std::endl;
-        std::cout << "| (___  | |__) |" << std::endl;
-        std::cout << " \\___ \\ |  ___/ " << std::endl;
+    std::cout << "\n--- Scan Finished. Found: " << found_paths.size() << " ---" << std::endl;
+    std::cout << "Scan time: " << elapsed.count() << " seconds." << std::endl;
+
+    if (!found_paths.empty()) {
+        std::cout << "  _____  ______ " << std::endl;
+        std::cout << " / ____||  ____|" << std::endl;
+        std::cout << "| (___  | |__   " << std::endl;
+        std::cout << " \\___ \\ |  __|  " << std::endl;
         std::cout << " ____) || |     " << std::endl;
         std::cout << "|_____/ |_|     " << std::endl;
     }
     else {
-        std::cout << "Not found. System is clean." << std::endl;
+        std::cout << "Not found." << std::endl;
         system("pause");
         return 0;
     }
