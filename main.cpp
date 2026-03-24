@@ -33,7 +33,7 @@ int main() {
     std::string root = "C:\\"; //root
     std::vector<std::string> found_paths;
 
-    std::cout << "--- SameerPatel finder ---" << std::endl;
+    std::cout << "--- SimpleFinder ---" << std::endl;
     std::cout << "Scan C:\\ ..." << std::endl;
 
     std::error_code ec;
@@ -69,14 +69,13 @@ int main() {
 
     std::cout << "\n--- Scan Finished. Found: " << found_paths.size() << " ---" << std::endl;
 
-    if (!found_paths.empty()) {
-        std::cout << "  _____                     " << std::endl;
-        std::cout << " / ____|                    " << std::endl;
-        std::cout << "| (___   __ _ _ __ ___  ___ " << std::endl;
-        std::cout << " \\___ \\ / _` | '_ ` _ \\/ _ \\" << std::endl;
-        std::cout << " ____) | (_| | | | | | |  __/" << std::endl;
-        std::cout << "|_____/ \\__,_|_| |_| |_|\\___|" << std::endl;
-        std::cout << "          DETECTED!          " << std::endl;
+  if (!found_paths.empty()) {
+        std::cout << "  _____  _____  " << std::endl;
+        std::cout << " / ____||  __ \\ " << std::endl;
+        std::cout << "| (___  | |__) |" << std::endl;
+        std::cout << " \\___ \\ |  ___/ " << std::endl;
+        std::cout << " ____) || |     " << std::endl;
+        std::cout << "|_____/ |_|     " << std::endl;
     }
     else {
         std::cout << "Not found. System is clean." << std::endl;
