@@ -1,5 +1,5 @@
 # Simple-Finder
-Simple finder
+File finder
 # Simple Finder (SF)
 
 High-speed file recovery and trace detection tool written in C++. 
